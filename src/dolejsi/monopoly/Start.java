@@ -11,7 +11,6 @@ public class Start extends JFrame {
 
     public Start(){
         setContentPane(panel1);
-
         //write code here
 
     }

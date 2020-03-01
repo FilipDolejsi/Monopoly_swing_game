@@ -1,23 +1,34 @@
 package dolejsi.monopoly;
 
-import javax.swing.*;
-
-public class Board extends JPanel {
-    public Integer x = 0;
-    int[] place = new int[x];
-
-    String owner;
-    Integer pricePaid;
-    Integer rentPrice;
-    Integer visitors;
-    Integer updates;
+public final class Board {
+    private final BoardTile[] tiles;
+    private final Player[] players;
+    private final Chance chance;
 
 
-    void Building(String owner1, Integer pricePaid1, Integer rentPrice1,Integer visitors1, Integer updates1){
-        owner1=owner;
-        pricePaid1=pricePaid;
-        rentPrice1=rentPrice;
-        visitors1=visitors;
-        updates1=updates;
+    public Board(BoardTile[] tiles, Player[] players, Chance chance) {
+        this.tiles = tiles;
+        this.players = players;
+        this.chance = chance;
+    }
+
+    public BoardTile[] getTiles() {
+        return tiles;
+    }
+
+    public Player[] getPlayers() {
+        return players;
+    }
+
+    public Chance getChance() {
+        return chance;
+    }
+
+    public int getJailPosition() {
+        throw new UnsupportedOperationException();
+    }
+
+    public int getGoPosition() {
+        throw new UnsupportedOperationException();
     }
 }

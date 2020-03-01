@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5902a880-e8c0-45e8-a962-1a7919dd3177" name="Default Changelist" comment="" />
+    <list default="true" id="5902a880-e8c0-45e8-a962-1a7919dd3177" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/dolejsi/monopoly/BoardTile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dolejsi/monopoly/Building.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dolejsi/monopoly/Card.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dolejsi/monopoly/Chance.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dolejsi/monopoly/Ownable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dolejsi/monopoly/Railroad.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dolejsi/monopoly/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dolejsi/monopoly/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dolejsi/monopoly/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dolejsi/monopoly/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dolejsi/monopoly/Start.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/dolejsi/monopoly/Start.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dolejsi/monopoly/Start.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dolejsi/monopoly/Start.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,7 +26,11 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1YNluvuLUMk2BEV3H5jDMS91Ox2" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -24,6 +40,11 @@
     <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW" value="true" />
     <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW" value="true" />
     <property name="settings.editor.selected.configurable" value="copyright" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="dolejsi.monopoly" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -71,30 +92,46 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state x="446" y="58" key="#com.intellij.ide.util.MemberChooser" timestamp="1583073239348">
+    <state x="446" y="58" key="#com.intellij.ide.util.MemberChooser" timestamp="1583080064471">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="446" y="58" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1583073239348" />
+    <state x="446" y="58" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1583080064471" />
     <state x="371" y="132" key="#com.intellij.ide.util.TreeFileChooserDialog" timestamp="1583070549934">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="371" y="132" key="#com.intellij.ide.util.TreeFileChooserDialog/0.0.1280.680@0.0.1280.680" timestamp="1583070549934" />
-    <state width="1237" height="163" key="GridCell.Tab.0.bottom" timestamp="1583075193580">
+    <state width="1237" height="204" key="GridCell.Tab.0.bottom" timestamp="1583092739958">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1583075193580" />
-    <state width="1237" height="163" key="GridCell.Tab.0.center" timestamp="1583075193580">
+    <state width="1237" height="204" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1583092739958" />
+    <state width="1237" height="204" key="GridCell.Tab.0.center" timestamp="1583092739958">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="163" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1583075193580" />
-    <state width="1237" height="163" key="GridCell.Tab.0.left" timestamp="1583075193578">
+    <state width="1237" height="204" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1583092739958" />
+    <state width="1237" height="204" key="GridCell.Tab.0.left" timestamp="1583092739957">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="163" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1583075193578" />
-    <state width="1237" height="163" key="GridCell.Tab.0.right" timestamp="1583075193580">
+    <state width="1237" height="204" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1583092739957" />
+    <state width="1237" height="204" key="GridCell.Tab.0.right" timestamp="1583092739958">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="163" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1583075193580" />
+    <state width="1237" height="204" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1583092739958" />
+    <state width="1237" height="204" key="GridCell.Tab.1.bottom" timestamp="1583092739958">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="204" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1583092739958" />
+    <state width="1237" height="204" key="GridCell.Tab.1.center" timestamp="1583092739958">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="204" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1583092739958" />
+    <state width="1237" height="204" key="GridCell.Tab.1.left" timestamp="1583092739958">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="204" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1583092739958" />
+    <state width="1237" height="204" key="GridCell.Tab.1.right" timestamp="1583092739958">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="204" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1583092739958" />
     <state x="142" y="0" key="SettingsEditor" timestamp="1583073268615">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -103,6 +140,14 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="337" y="166" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1583069082710" />
+    <state x="450" y="259" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1583093290400">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="450" y="259" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1583093290400" />
+    <state x="282" y="67" width="700" height="530" key="recent.locations.popup" timestamp="1583078581991">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="282" y="67" width="700" height="530" key="recent.locations.popup/0.0.1280.680@0.0.1280.680" timestamp="1583078581991" />
     <state x="297" y="151" key="run.anything.popup" timestamp="1583069693962">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
