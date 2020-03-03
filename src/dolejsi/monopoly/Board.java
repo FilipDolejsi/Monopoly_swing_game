@@ -14,6 +14,10 @@ public final class Board {
         this.chance = chance;
 
         this.jailPosition = findJailPosition(tiles);
+
+        if (tiles.length == 0 || !(tiles[0] instanceof GoTile)) {
+            throw new IllegalArgumentException("Board should have Go on position 0.");
+        }
     }
 
     private static int findJailPosition(BoardTile[] tiles) {

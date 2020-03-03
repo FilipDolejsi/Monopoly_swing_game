@@ -27,7 +27,7 @@ public class Player {
 
     void move(int moveBy, int tileCount) {
         currentPosition += moveBy;
-        if (currentPosition > tileCount) {
+        if (currentPosition >= tileCount) {
             currentPosition -= tileCount;
             money += 200;
         }
