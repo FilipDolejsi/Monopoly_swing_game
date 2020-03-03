@@ -25,10 +25,10 @@ public final class Board {
     }
 
     public int getJailPosition() {
-        throw new UnsupportedOperationException();
+        return 6;
     }
 
     public int getGoPosition() {
-        throw new UnsupportedOperationException();
+        return 0;
     }
 }

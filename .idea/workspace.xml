@@ -2,15 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5902a880-e8c0-45e8-a962-1a7919dd3177" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/dolejsi/monopoly/BoardTile.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dolejsi/monopoly/Building.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dolejsi/monopoly/Card.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dolejsi/monopoly/Chance.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dolejsi/monopoly/Ownable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dolejsi/monopoly/Railroad.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dolejsi/monopoly/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dolejsi/monopoly/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dolejsi/monopoly/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dolejsi/monopoly/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dolejsi/monopoly/Chance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dolejsi/monopoly/Chance.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dolejsi/monopoly/Start.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/dolejsi/monopoly/Start.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dolejsi/monopoly/Start.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dolejsi/monopoly/Start.java" afterDir="false" />
     </list>
@@ -89,33 +83,49 @@
       <option name="presentableId" value="Default" />
       <updated>1582791159411</updated>
     </task>
+    <task id="LOCAL-00001" summary="Updated a lot of things. Nothing will be happening in the UI point of view yet.">
+      <created>1583093342079</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1583093342079</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Updated a lot of things. Nothing will be happening in the UI point of view yet." />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated a lot of things. Nothing will be happening in the UI point of view yet." />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="446" y="58" key="#com.intellij.ide.util.MemberChooser" timestamp="1583080064471">
+    <state x="446" y="58" key="#com.intellij.ide.util.MemberChooser" timestamp="1583141715468">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="446" y="58" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1583080064471" />
+    <state x="446" y="58" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1583141715468" />
     <state x="371" y="132" key="#com.intellij.ide.util.TreeFileChooserDialog" timestamp="1583070549934">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="371" y="132" key="#com.intellij.ide.util.TreeFileChooserDialog/0.0.1280.680@0.0.1280.680" timestamp="1583070549934" />
-    <state width="1237" height="204" key="GridCell.Tab.0.bottom" timestamp="1583092739958">
+    <state x="297" y="0" key="CommitChangelistDialog2" timestamp="1583257751463">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="204" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1583092739958" />
-    <state width="1237" height="204" key="GridCell.Tab.0.center" timestamp="1583092739958">
+    <state x="297" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1583257751463" />
+    <state width="1237" height="163" key="GridCell.Tab.0.bottom" timestamp="1583226514840">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="204" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1583092739958" />
-    <state width="1237" height="204" key="GridCell.Tab.0.left" timestamp="1583092739957">
+    <state width="1237" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1583226514840" />
+    <state width="1237" height="163" key="GridCell.Tab.0.center" timestamp="1583226514838">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="204" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1583092739957" />
-    <state width="1237" height="204" key="GridCell.Tab.0.right" timestamp="1583092739958">
+    <state width="1237" height="163" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1583226514838" />
+    <state width="1237" height="163" key="GridCell.Tab.0.left" timestamp="1583226514836">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="204" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1583092739958" />
+    <state width="1237" height="163" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1583226514836" />
+    <state width="1237" height="163" key="GridCell.Tab.0.right" timestamp="1583226514839">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="163" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1583226514839" />
     <state width="1237" height="204" key="GridCell.Tab.1.bottom" timestamp="1583092739958">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -136,10 +146,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1583073268615" />
-    <state x="337" y="166" key="com.intellij.ide.util.TipDialog" timestamp="1583069082710">
+    <state x="337" y="166" key="com.intellij.ide.util.TipDialog" timestamp="1583257725076">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="337" y="166" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1583069082710" />
+    <state x="337" y="166" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1583257725076" />
     <state x="450" y="259" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1583093290400">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -148,9 +158,13 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="282" y="67" width="700" height="530" key="recent.locations.popup/0.0.1280.680@0.0.1280.680" timestamp="1583078581991" />
-    <state x="297" y="151" key="run.anything.popup" timestamp="1583069693962">
+    <state x="297" y="151" key="run.anything.popup" timestamp="1583141993382">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="297" y="151" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1583069693962" />
+    <state x="297" y="151" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1583141993382" />
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1583141617187">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1583141617187" />
   </component>
 </project>

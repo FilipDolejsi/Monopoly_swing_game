@@ -56,7 +56,7 @@ public final class Chance {
 
     Random randomCard = new Random();
 
-    Card next(){
+    Card next(Card[] card){
         nextCard=randomCard.nextInt(cards.length)+1;
         throw new UnsupportedOperationException();
     }
