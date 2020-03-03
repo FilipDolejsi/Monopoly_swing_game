@@ -3,7 +3,11 @@ package dolejsi.monopoly;
 import java.util.Random;
 
 public final class Chance {
+    private Card[] cards;
+    private final Random randomCard = new Random();
+
     public Chance() {
+        super();
         this.cards = new Card[]{
                 new Card("Your building and loan matures—Collect $150") {
                     @Override
@@ -51,14 +55,10 @@ public final class Chance {
         };
     }
 
-    private Card[] cards;
-    private int nextCard;
 
-    Random randomCard = new Random();
-
-    Card next(Card[] card){
-        nextCard=randomCard.nextInt(cards.length)+1;
-        throw new UnsupportedOperationException();
+    Card next() {
+        int nextCard = randomCard.nextInt(cards.length);
+        return this.cards[nextCard];
     }
 
     public Card[] getCards() {

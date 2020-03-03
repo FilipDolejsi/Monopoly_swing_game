@@ -8,7 +8,7 @@ public class Player {
     private boolean jailFree;
 
 
-    Player(String name, int money){
+    Player(String name, int money) {
         this.name = name;
         this.money = money;
     }
@@ -25,21 +25,21 @@ public class Player {
         return currentPosition;
     }
 
-    void move(int moveBy, int tileCount){
-        currentPosition+=moveBy;
-        if (currentPosition>tileCount){
-            currentPosition-=tileCount;
-            money+=200;
+    void move(int moveBy, int tileCount) {
+        currentPosition += moveBy;
+        if (currentPosition > tileCount) {
+            currentPosition -= tileCount;
+            money += 200;
         }
     }
 
     public void addMoney(int moneyToAdd) {
-        money+=moneyToAdd;
+        money += moneyToAdd;
     }
 
     public void goToJail(int jailPosition) {
-        currentPosition=jailPosition;
-        this.inJail=true;
+        currentPosition = jailPosition;
+        this.inJail = true;
     }
 
     public boolean isInJail() {
@@ -47,14 +47,22 @@ public class Player {
     }
 
     public void goToGo(int goPosition) {
-        currentPosition=goPosition;
+        currentPosition = goPosition;
     }
 
     public void getOutOfJailFree() {
-        this.jailFree=true;
+        this.jailFree = true;
     }
 
     public boolean isJailFree() {
         return jailFree;
+    }
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                "name='" + name + '\'' +
+                ", money=" + money +
+                '}';
     }
 }
