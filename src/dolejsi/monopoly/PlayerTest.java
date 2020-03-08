@@ -46,7 +46,27 @@ class PlayerTest {
     }
 
     @Test
-    void addMoney() {
+    void isAliveIsTrueIfHasMoney() {
+        // GIVEN
+        final Player filip = new Player("Filip", 1);
+        // THEN
+        assertTrue(filip.isAlive());
+    }
+
+    @Test
+    void isAliveIsTrueIfHasNoMoney() {
+        // GIVEN
+        final Player filip = new Player("Filip", 0);
+        // THEN
+        assertTrue(filip.isAlive());
+    }
+
+    @Test
+    void isNotAliveIsFalseIfHasDebt() {
+        // GIVEN
+        final Player filip = new Player("Filip", -1);
+        // THEN
+        assertFalse(filip.isAlive());
     }
 
     @Test

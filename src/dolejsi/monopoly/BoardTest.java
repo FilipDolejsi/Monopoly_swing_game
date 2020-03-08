@@ -1,7 +1,12 @@
 package dolejsi.monopoly;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
+import static java.util.Arrays.asList;
+import static java.util.Collections.singletonList;
 import static org.junit.jupiter.api.Assertions.*;
 
 class BoardTest {
@@ -21,10 +26,10 @@ class BoardTest {
                 new ChanceTile(2, chance),
                 new Jail(3)
                 //todo: spater
-        }, new Player[]{
+        }, asList(
                 player1,
                 player2
-        }, chance);
+        ), chance);
     }
 
     @org.junit.jupiter.api.Test
@@ -57,5 +62,16 @@ class BoardTest {
         // THEN
         final Player currentPlayer3 = board.getCurrentPlayer();
         assertSame(player1, currentPlayer3);
+    }
+
+    @Test
+    public void removesPlayerWithDebt() {
+        // GIVEN
+        player2.addMoney(-1000);
+        // WHEN
+        final List<Player> deadPlayers = board.removeDeadPlayers();
+        // THEN
+        assertEquals(1, deadPlayers.size());
+        assertIterableEquals(singletonList(player2), deadPlayers);
     }
 }

@@ -1,5 +1,7 @@
 package dolejsi.monopoly;
 
+import java.util.Objects;
+
 public class Player {
     private final String name;
     private int money;
@@ -9,12 +11,12 @@ public class Player {
         this.inJail = inJail;
     }
 
-    private boolean inJail;
-    private boolean jailFree;
+    private boolean inJail = false;
+    private boolean jailFree = false;
 
 
     Player(String name, int money) {
-        this.name = name;
+        this.name = Objects.requireNonNull(name);
         this.money = money;
     }
 
@@ -55,8 +57,8 @@ public class Player {
         currentPosition = goPosition;
     }
 
-    public void setIsJailFree() {
-        this.jailFree = true;
+    public void setIsJailFree(boolean isJailFree) {
+        this.jailFree = isJailFree;
     }
 
     public boolean getIsJailFree() {
@@ -73,5 +75,22 @@ public class Player {
 
     public String getInventory() {
         return name+" has $"+money+". You own "+" buildings or railroads.";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Player player = (Player) o;
+        return name.equals(player.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
+    }
+
+    public boolean isAlive() {
+        return money >= 0;
     }
 }

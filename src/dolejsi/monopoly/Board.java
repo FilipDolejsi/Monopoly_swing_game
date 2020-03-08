@@ -1,16 +1,20 @@
 package dolejsi.monopoly;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public final class Board {
     private final BoardTile[] tiles;
-    private final Player[] players;
+    private final List<Player> players;
     private final Chance chance;
     private final int jailPosition;
     private int currentPlayer;
 
 
-    public Board(BoardTile[] tiles, Player[] players, Chance chance) {
+    public Board(BoardTile[] tiles, List<Player> players, Chance chance) {
         this.tiles = tiles;
-        this.players = players;
+        this.players = new ArrayList<>(players);
         this.chance = chance;
 
         this.jailPosition = findJailPosition(tiles);
@@ -38,7 +42,7 @@ public final class Board {
         return tiles;
     }
 
-    public Player[] getPlayers() {
+    public List<Player> getPlayers() {
         return players;
     }
 
@@ -55,7 +59,7 @@ public final class Board {
     }
 
     public Player getCurrentPlayer() {
-        return this.players[currentPlayer];
+        return this.players.get(currentPlayer);
     }
 
     public BoardTile getTileAt(int currentPosition) {
@@ -64,10 +68,30 @@ public final class Board {
 
     public void nextPlayer() {
         currentPlayer++;
-        if (currentPlayer == players.length) {
+        if (currentPlayer == players.size()) {
             currentPlayer = 0;
-        } else if (currentPlayer > players.length) {
+        } else if (currentPlayer > players.size()) {
             throw new IndexOutOfBoundsException("Unexpected current player: " + currentPlayer);
         }
+    }
+
+    public List<Player> removeDeadPlayers() {
+        final List<Player> deadPlayers = getPlayers().stream()
+                .filter(player -> !player.isAlive())
+                .collect(Collectors.toList());
+
+        this.players.removeAll(deadPlayers);
+
+        // find board tiles owned by dead players
+        for (BoardTile tile : this.getTiles()) {
+            if (tile instanceof Ownable) {
+                Ownable ownable = (Ownable) tile;
+                if (deadPlayers.contains(ownable.getOwner())) {
+                    ownable.setOwner(null);
+                }
+            }
+        }
+
+        return deadPlayers;
     }
 }

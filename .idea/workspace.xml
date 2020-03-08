@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5902a880-e8c0-45e8-a962-1a7919dd3177" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/dolejsi/monopoly/GoToJail.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dolejsi/monopoly/Parking.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/dolejsi/monopoly/Tax.java" afterDir="false" />
+    <list default="true" id="5902a880-e8c0-45e8-a962-1a7919dd3177" name="Default Changelist" comment="added vital changes">
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/SonOf.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dolejsi/monopoly/NewGameForm.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dolejsi/monopoly/NewGameForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dolejsi/monopoly/Building.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dolejsi/monopoly/Building.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dolejsi/monopoly/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dolejsi/monopoly/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dolejsi/monopoly/BoardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dolejsi/monopoly/BoardTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dolejsi/monopoly/Chance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dolejsi/monopoly/Chance.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dolejsi/monopoly/Dice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dolejsi/monopoly/Dice.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dolejsi/monopoly/Ownable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dolejsi/monopoly/Ownable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dolejsi/monopoly/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dolejsi/monopoly/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dolejsi/monopoly/Railroad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dolejsi/monopoly/Railroad.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dolejsi/monopoly/PlayerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dolejsi/monopoly/PlayerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dolejsi/monopoly/Start.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/dolejsi/monopoly/Start.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dolejsi/monopoly/Start.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dolejsi/monopoly/Start.java" afterDir="false" />
     </list>
@@ -43,8 +44,10 @@
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW" value="true" />
     <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW" value="true" />
+    <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="221" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="create.test.in.the.same.root" value="true" />
@@ -76,7 +79,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BoardTest.getTileAt" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="BoardTest.removesPlayerWithDebt" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Monopoly" />
       <extension name="coverage">
         <pattern>
@@ -86,7 +89,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="dolejsi.monopoly" />
       <option name="MAIN_CLASS_NAME" value="dolejsi.monopoly.BoardTest" />
-      <option name="METHOD_NAME" value="getTileAt" />
+      <option name="METHOD_NAME" value="removesPlayerWithDebt" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -103,6 +106,22 @@
       <option name="PACKAGE_NAME" value="dolejsi.monopoly" />
       <option name="MAIN_CLASS_NAME" value="dolejsi.monopoly.PlayerTest" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PlayerTest.isAliveIsTrueIfHasMoney" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Monopoly" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="dolejsi.monopoly.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="dolejsi.monopoly" />
+      <option name="MAIN_CLASS_NAME" value="dolejsi.monopoly.PlayerTest" />
+      <option name="METHOD_NAME" value="isAliveIsTrueIfHasMoney" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -155,10 +174,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.BoardTest.removesPlayerWithDebt" />
         <item itemvalue="JUnit.PlayerTest" />
+        <item itemvalue="JUnit.PlayerTest.isAliveIsTrueIfHasMoney" />
         <item itemvalue="JUnit.PlayerTest.moveToStart" />
         <item itemvalue="JUnit.PlayerTest.move" />
-        <item itemvalue="JUnit.BoardTest.getTileAt" />
       </list>
     </recent_temporary>
   </component>
@@ -213,7 +233,14 @@
       <option name="project" value="LOCAL" />
       <updated>1583269133871</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="added vital changes">
+      <created>1583673017139</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1583673017140</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -221,69 +248,74 @@
     <MESSAGE value="Nothing much is added" />
     <MESSAGE value="Algorithm and other bits and pieces fixed :)" />
     <MESSAGE value="Added tests : |" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added tests : |" />
+    <MESSAGE value="added vital changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="added vital changes" />
   </component>
   <component name="WindowStateProjectService">
     <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583269108419">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1583269108419" />
-    <state x="446" y="58" key="#com.intellij.ide.util.MemberChooser" timestamp="1583663939410">
+    <state x="446" y="58" key="#com.intellij.ide.util.MemberChooser" timestamp="1583696536431">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="446" y="58" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1583663939410" />
-    <state x="371" y="132" key="#com.intellij.ide.util.TreeFileChooserDialog" timestamp="1583666441866">
+    <state x="446" y="58" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1583696536431" />
+    <state x="371" y="132" key="#com.intellij.ide.util.TreeFileChooserDialog" timestamp="1583682097786">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="371" y="132" key="#com.intellij.ide.util.TreeFileChooserDialog/0.0.1280.680@0.0.1280.680" timestamp="1583666441866" />
+    <state x="371" y="132" key="#com.intellij.ide.util.TreeFileChooserDialog/0.0.1280.680@0.0.1280.680" timestamp="1583682097786" />
     <state x="371" y="89" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1583435973408">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="371" y="89" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1583435973408" />
-    <state x="297" y="0" key="CommitChangelistDialog2" timestamp="1583269132495">
+    <state x="297" y="0" key="CommitChangelistDialog2" timestamp="1583673662764">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="297" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1583269132495" />
-    <state width="440" height="438" key="DebuggerActiveHint" timestamp="1583266140053">
+    <state x="297" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1583673662764" />
+    <state width="488" height="438" key="DebuggerActiveHint" timestamp="1583697426664">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="440" height="438" key="DebuggerActiveHint/0.0.1280.680@0.0.1280.680" timestamp="1583266140053" />
-    <state width="1237" height="163" key="GridCell.Tab.0.bottom" timestamp="1583672848622">
+    <state width="488" height="438" key="DebuggerActiveHint/0.0.1280.680@0.0.1280.680" timestamp="1583697426664" />
+    <state width="1237" height="204" key="GridCell.Tab.0.bottom" timestamp="1583699677546">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1583672848622" />
-    <state width="1237" height="163" key="GridCell.Tab.0.center" timestamp="1583672848622">
+    <state width="1237" height="204" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1583699677546" />
+    <state width="1237" height="204" key="GridCell.Tab.0.center" timestamp="1583699677546">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="163" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1583672848622" />
-    <state width="1237" height="163" key="GridCell.Tab.0.left" timestamp="1583672848622">
+    <state width="1237" height="204" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1583699677546" />
+    <state width="1237" height="204" key="GridCell.Tab.0.left" timestamp="1583699677546">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="163" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1583672848622" />
-    <state width="1237" height="163" key="GridCell.Tab.0.right" timestamp="1583672848622">
+    <state width="1237" height="204" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1583699677546" />
+    <state width="1237" height="204" key="GridCell.Tab.0.right" timestamp="1583699677546">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="163" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1583672848622" />
-    <state width="1237" height="204" key="GridCell.Tab.1.bottom" timestamp="1583666161710">
+    <state width="1237" height="204" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1583699677546" />
+    <state width="1237" height="204" key="GridCell.Tab.1.bottom" timestamp="1583699677546">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="204" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1583666161710" />
-    <state width="1237" height="204" key="GridCell.Tab.1.center" timestamp="1583666161710">
+    <state width="1237" height="204" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1583699677546" />
+    <state width="1237" height="204" key="GridCell.Tab.1.center" timestamp="1583699677546">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="204" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1583666161710" />
-    <state width="1237" height="204" key="GridCell.Tab.1.left" timestamp="1583666161710">
+    <state width="1237" height="204" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1583699677546" />
+    <state width="1237" height="204" key="GridCell.Tab.1.left" timestamp="1583699677546">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="204" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1583666161710" />
-    <state width="1237" height="204" key="GridCell.Tab.1.right" timestamp="1583666161710">
+    <state width="1237" height="204" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1583699677546" />
+    <state width="1237" height="204" key="GridCell.Tab.1.right" timestamp="1583699677546">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="204" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1583666161710" />
-    <state x="142" y="0" key="SettingsEditor" timestamp="1583672055486">
+    <state width="1237" height="204" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1583699677546" />
+    <state x="417" y="55" key="RollbackChangesDialog" timestamp="1583673658964">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1583672055486" />
+    <state x="417" y="55" key="RollbackChangesDialog/0.0.1280.680@0.0.1280.680" timestamp="1583673658963" />
+    <state x="142" y="0" key="SettingsEditor" timestamp="1583692379699">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1583692379699" />
     <state x="337" y="166" key="com.intellij.ide.util.TipDialog" timestamp="1583257725076">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -304,10 +336,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="412" y="45" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1280.680@0.0.1280.680" timestamp="1583268646418" />
-    <state x="371" y="97" key="extract.method.dialog" timestamp="1583267040023">
+    <state x="371" y="97" key="extract.method.dialog" timestamp="1583692542656">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="371" y="97" key="extract.method.dialog/0.0.1280.680@0.0.1280.680" timestamp="1583267040023" />
+    <state x="371" y="97" key="extract.method.dialog/0.0.1280.680@0.0.1280.680" timestamp="1583692542656" />
     <state x="282" y="67" width="700" height="530" key="recent.locations.popup" timestamp="1583078581991">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -330,33 +362,23 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/dolejsi/monopoly/Start.java</url>
-          <line>96</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/dolejsi/monopoly/Start.java</url>
-          <line>152</line>
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/dolejsi/monopoly/Start.java</url>
-          <line>170</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/dolejsi/monopoly/Start.java</url>
-          <line>188</line>
+          <line>296</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/dolejsi/monopoly/Start.java</url>
-          <line>198</line>
+          <line>306</line>
           <option name="timeStamp" value="11" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/dolejsi/monopoly/Start.java</url>
-          <line>133</line>
-          <option name="timeStamp" value="13" />
+          <line>202</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dolejsi/monopoly/Start.java</url>
+          <line>219</line>
+          <option name="timeStamp" value="24" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
