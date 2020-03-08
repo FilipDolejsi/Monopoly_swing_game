@@ -8,6 +8,7 @@ public class Building extends Ownable {
         this.name = name;
     }
 
+    @Override
     public String getName() {
         return name;
     }

@@ -4,6 +4,11 @@ public class Player {
     private final String name;
     private int money;
     private int currentPosition;
+
+    public void setInJail(boolean inJail) {
+        this.inJail = inJail;
+    }
+
     private boolean inJail;
     private boolean jailFree;
 
@@ -29,7 +34,7 @@ public class Player {
         currentPosition += moveBy;
         if (currentPosition >= tileCount) {
             currentPosition -= tileCount;
-            money += 200;
+            addMoney(200);
         }
     }
 
@@ -50,11 +55,11 @@ public class Player {
         currentPosition = goPosition;
     }
 
-    public void getOutOfJailFree() {
+    public void setIsJailFree() {
         this.jailFree = true;
     }
 
-    public boolean isJailFree() {
+    public boolean getIsJailFree() {
         return jailFree;
     }
 
@@ -64,5 +69,9 @@ public class Player {
                 "name='" + name + '\'' +
                 ", money=" + money +
                 '}';
+    }
+
+    public String getInventory() {
+        return name+" has $"+money+". You own "+" buildings or railroads.";
     }
 }

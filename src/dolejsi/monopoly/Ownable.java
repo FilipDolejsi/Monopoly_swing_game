@@ -1,7 +1,7 @@
 package dolejsi.monopoly;
 
 public abstract class Ownable extends BoardTile {
-    private final Player owner;
+    private Player owner;
     private final int cost;
     private final int rent;
 
@@ -16,6 +16,10 @@ public abstract class Ownable extends BoardTile {
         return owner;
     }
 
+    public void setOwner(Player currentPlayer){
+        this.owner = currentPlayer;
+    }
+
     public int getCost() {
         return cost;
     }
@@ -23,4 +27,6 @@ public abstract class Ownable extends BoardTile {
     public int getRent() {
         return rent;
     }
+
+    public abstract String getName();
 }

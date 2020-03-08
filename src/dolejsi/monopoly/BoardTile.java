@@ -10,4 +10,6 @@ public abstract class BoardTile {
     public int getPosition() {
         return position;
     }
+
+
 }
