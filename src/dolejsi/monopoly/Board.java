@@ -75,6 +75,18 @@ public final class Board {
         }
     }
 
+    boolean canCurrentPlayerBuy() {
+        final BoardTile currentTile = getTileAt(getCurrentPlayer().getCurrentPosition());
+
+        if (currentTile instanceof Ownable){
+            final Ownable ownable = (Ownable) currentTile;
+            return getCurrentPlayer().getMoney()
+                    >= ownable.getCost() && ownable.getOwner() == null;
+        }else {
+            return false;
+        }
+    }
+
     public List<Player> removeDeadPlayers() {
         final List<Player> deadPlayers = getPlayers().stream()
                 .filter(player -> !player.isAlive())
@@ -93,5 +105,17 @@ public final class Board {
         }
 
         return deadPlayers;
+    }
+
+    public boolean canCurrentPlayerSell() {
+        final BoardTile currentTile = getTileAt(getCurrentPlayer().getCurrentPosition());
+
+        if (currentTile instanceof Ownable){
+            final Ownable ownable = (Ownable) currentTile;
+
+            return getCurrentPlayer().equals(ownable.getOwner());
+        }else {
+            return false;
+        }
     }
 }

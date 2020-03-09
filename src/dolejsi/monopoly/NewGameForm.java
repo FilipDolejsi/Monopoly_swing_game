@@ -12,14 +12,15 @@ public class NewGameForm extends JDialog {
     private JTextArea textArea1;
     private JTextField playerName;
     private JButton addPlayerButton;
+    private JCheckBox robotCheckBox;
     private boolean okeyed;
-    private final ArrayList<String> playerNames;
+    private final ArrayList<Player> players;
 
     public NewGameForm() {
-        this.playerNames = new ArrayList<>();
+        this.players = new ArrayList<>();
         setContentPane(contentPane);
         setModal(true);
-        setSize(400,500);
+        setSize(440,500);
         getRootPane().setDefaultButton(buttonOK);
 
         buttonOK.addActionListener(new ActionListener() {
@@ -52,11 +53,18 @@ public class NewGameForm extends JDialog {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 final String newPlayerName = playerName.getText();
-                playerNames.add(newPlayerName);
                 textArea1.append(newPlayerName + '\n');
                 playerName.setText("");
                 buttonOK.setEnabled(true);
-                if (playerNames.size() >= 3) {
+                robotCheckBox.setEnabled(true);
+                Player newPlayer;
+                if (robotCheckBox.isSelected()){
+                    newPlayer = new AutomaticPlayer(newPlayerName, 1500);
+                } else{
+                    newPlayer = new Player(newPlayerName, 1500);
+                }
+                players.add(newPlayer);
+                if (players.size() >= 3) {
                     addPlayerButton.setEnabled(false);
                 }
             }
@@ -77,7 +85,7 @@ public class NewGameForm extends JDialog {
         return okeyed;
     }
 
-    public List<String> getPlayerNames(){
-        return this.playerNames;
+    public List<Player> getPlayers(){
+        return this.players;
     }
 }

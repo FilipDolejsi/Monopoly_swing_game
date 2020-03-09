@@ -12,6 +12,7 @@ import static java.util.Arrays.asList;
 public class Start extends JFrame {
     private final Dice dice;
     private final Board board;
+    private final Chance chance;
     //when using the form, please use reasonable names and place the components in mainPanel.
     //main panels and buttons
     private JPanel mainPanel;
@@ -46,7 +47,6 @@ public class Start extends JFrame {
     private JPanel panel23;
 
     //important labels
-    private JLabel playerLabel;
     private JLabel diceLabel1;
     private JLabel diceLabel2;
 
@@ -77,11 +77,11 @@ public class Start extends JFrame {
     private JPanel tile23Players;
     private JTextArea playerInfo;
     private JTextArea tileInfo;
-
+    private JButton goByTrainToRailroad;
+    private JComboBox railroads;
     private JPanel[] allPanels;
 
     private JPanel[] tilePlayerPositions;
-
 
     private Color[] playerColors = new Color[]{Color.BLUE, Color.RED, Color.GREEN};
 
@@ -152,9 +152,7 @@ public class Start extends JFrame {
 
         final List<Player> players = newGameForm.isOkeyed() ?
                 //when okeyed
-                newGameForm.getPlayerNames().stream()
-                        .map(playerName -> new Player(playerName, 1500))
-                        .collect(Collectors.toList()) :
+                newGameForm.getPlayers() :
                 //when cancelled
                 asList(
                         new Player("Filip", 1500),
@@ -162,7 +160,7 @@ public class Start extends JFrame {
                         new Player("Jarka", 1500)
                 );
 
-        final Chance chance = new Chance();
+        this.chance = new Chance();
         this.board = new Board(new BoardTile[]{
                 new GoTile(),
                 new Building(1, null, 60, 10, "Old Kent Road"),
@@ -193,95 +191,17 @@ public class Start extends JFrame {
 
         this.dice = new Dice();
 
-        playerLabel.setText(players.get(0).getInventory());
-
         showPlayerPositions();
         showTileOwners();
+
+        updatePlayerInfo();
+
+        goByTrainToRailroad.setEnabled(false);
 
         move.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                final Player currentPlayer = board.getCurrentPlayer();
-                if (currentPlayer.isInJail() && !currentPlayer.getIsJailFree()) {
-                    if (!playOutOfJail()){
-                        switchToNextPlayer();
-                    }
-                }
-                nextPlayerButton.setEnabled(true);
-                move.setEnabled(false);
-                int finalDiceValue = 0;//diceValue1 + diceValue2 added on;
-
-                for (int i = 0; i < 3; i++) {
-                    // roll dice
-                    final int diceValue1 = 1;//dice.getNum1();
-                    final int diceValue2 = 1;//dice.getNum2();
-                    diceLabel1.setText(String.valueOf(diceValue1));
-                    diceLabel2.setText(String.valueOf(diceValue2));
-                    finalDiceValue += diceValue1 + diceValue2;
-
-                    if (diceValue1 == diceValue2) {
-                        JOptionPane.showMessageDialog(null, "You got a double of two " + diceValue1 + "'s. It will automatically throw again");
-
-                    } else {
-                        break;
-                    }
-                    if (i == 2) {
-                        JOptionPane.showMessageDialog(null, "You threw three doubles!!! Go to Jail!!!");
-                        currentPlayer.goToJail(board.getJailPosition());
-                        switchToNextPlayer();
-                        showPlayerPositions();
-                        return;
-                    }
-                }
-
-//todo: if bool true then switch to next player and continue;
-                // advance active player
-                currentPlayer.move(finalDiceValue, board.getTiles().length);
-                showPlayerPositions();
-                JOptionPane.showMessageDialog(null, "You threw a total of " + finalDiceValue + ".");
-
-                final BoardTile currentTile = board.getTileAt(currentPlayer.getCurrentPosition());
-                if (currentTile instanceof ChanceTile) {
-                    chance.next().applyCard(currentPlayer, board);
-                } else if (currentTile instanceof Ownable) {
-
-                    final Ownable ownable = (Ownable) currentTile;
-                    String info=("Name: " + ownable.getName() + "\n" +
-                            "Owner: " + String.valueOf(ownable.getOwner()) + "\n" +
-                            "Cost: " + String.valueOf(ownable.getCost()) + "\n" +
-                            "Rent price: " + String.valueOf(ownable.getRent()));
-                    tileInfo.setText(info);
-
-                    if (currentPlayer.getMoney()
-                            >= ownable.getCost() && ownable.getOwner() == null) {
-                        buy.setEnabled(true);
-                        JOptionPane.showMessageDialog(null, ("You can now buy " + ownable.getName()) + " for $" + ownable.getCost() + ".");
-                        if (currentPlayer == ownable.getOwner()) {
-                            sell.setEnabled(true);
-                        }
-                    } else if (ownable.getOwner() != currentPlayer && ownable.getOwner()!=null) {
-                        Player currentOwner = ownable.getOwner();
-                        JOptionPane.showMessageDialog(null, "YACK... You stepped on " + currentOwner.getName() + "'s property! Pay $" + ownable.getRent() + " for rent!");
-                        currentOwner.addMoney(ownable.getRent());
-                        currentPlayer.addMoney(-ownable.getRent());
-                        JOptionPane.showMessageDialog(null, currentOwner.getName() + " got $" + ownable.getRent() + " from " + currentPlayer.getName() + ".");
-                    }
-
-
-                } else if (currentTile instanceof GoToJail) {
-                    JOptionPane.showMessageDialog(null, "Go to Jail :(");
-                    currentPlayer.goToJail(board.getJailPosition());
-                    currentPlayer.setInJail(true);
-                    JOptionPane.showMessageDialog(null, "You are successfully in jail");
-                    //todo: oveřit
-                } else if (currentTile instanceof Tax) {
-                    final int taxToPay = ((Tax) currentTile).getTaxToPay();
-                    JOptionPane.showMessageDialog(null, "You have landed on the TAX space. Pay the " + -taxToPay + " now!");
-                    currentPlayer.addMoney(taxToPay);
-                    //todo: update label when add Money happens
-                }
-                playerLabel.setText(currentPlayer.getInventory());
-                showPlayerPositions();
+                moveInvoked();
             }
 
         });
@@ -326,6 +246,148 @@ public class Start extends JFrame {
                 }
             }
         });
+        goByTrainToRailroad.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                final Player currentPlayer = board.getCurrentPlayer();
+                final BoardTile currentTile = board.getTileAt(currentPlayer.getCurrentPosition());
+                if(railroads.getSelectedIndex()==0){
+                    currentPlayer.goToRailroad1();
+                } else if (railroads.getSelectedIndex()==1){
+                    currentPlayer.goToRailroad2();
+                } else if (railroads.getSelectedIndex()==2){
+                    currentPlayer.goToRailroad3();
+                } else if (railroads.getSelectedIndex()==3){
+                    currentPlayer.goToRailroad4();
+                }
+                showPlayerPositions();
+            }
+        });
+    }
+
+    private void updatePlayerInfo() {
+        final Player currentPlayer = board.getCurrentPlayer();
+        String info = ("Name: " + currentPlayer.getName() + "\n" +
+                "Money: " + String.valueOf(currentPlayer.getMoney()));
+        playerInfo.setText(info);
+    }
+
+    private void moveInvoked() {
+        final Player currentPlayer = board.getCurrentPlayer();
+        final boolean isRobot = currentPlayer instanceof AutomaticPlayer;
+        if (currentPlayer.isInJail() && !currentPlayer.getIsJailFree()) {
+            if (!playOutOfJail()){
+                switchToNextPlayer();
+            }
+        }
+        nextPlayerButton.setEnabled(true);
+        move.setEnabled(false);
+        int finalDiceValue = 0;//diceValue1 + diceValue2 added on;
+
+        for (int i = 0; i < 3; i++) {
+            // roll dice
+            final int diceValue1 = dice.getNum1();
+            final int diceValue2 = dice.getNum2();
+            diceLabel1.setText(String.valueOf(diceValue1));
+            diceLabel2.setText(String.valueOf(diceValue2));
+            finalDiceValue += diceValue1 + diceValue2;
+
+            if (diceValue1 == diceValue2) {
+                final String message = "You got a double of two " + diceValue1 + "'s. It will automatically throw again";
+                showMessageToHuman(isRobot, message);
+            } else {
+                break;
+            }
+            if (i == 2) {
+                showMessageToHuman(isRobot, "You threw three doubles!!! Go to Jail!!!");
+                currentPlayer.goToJail(board.getJailPosition());
+                switchToNextPlayer();
+                showPlayerPositions();
+                return;
+            }
+        }
+
+//todo: if bool true then switch to next player and continue;
+        // advance active player
+        currentPlayer.move(finalDiceValue, board.getTiles().length);
+        showPlayerPositions();
+        showMessageToHuman(isRobot, "You threw a total of " + finalDiceValue + ".");
+
+        final BoardTile currentTile = board.getTileAt(currentPlayer.getCurrentPosition());
+        if (currentTile instanceof ChanceTile) {
+            chance.next().applyCard(currentPlayer, board);
+            updateChanceTileInfo();
+        } else if (currentTile instanceof Ownable) {
+
+            final Ownable ownable = (Ownable) currentTile;
+            updateOwnableTileInfo(ownable);
+
+            if (board.canCurrentPlayerBuy()) {
+                buy.setEnabled(true);
+                showMessageToHuman(isRobot, ("You can now buy " + ownable.getName()) + " for $" + ownable.getCost() + ".");
+                if (currentPlayer == ownable.getOwner()) {
+                    sell.setEnabled(true);
+                }
+            } else if (ownable.getOwner() != currentPlayer && ownable.getOwner()!=null) {
+                Player currentOwner = ownable.getOwner();
+                showMessageToHuman(isRobot, "YACK... You stepped on " + currentOwner.getName() + "'s property! Pay $" + ownable.getRent() + " for rent!");
+                currentOwner.addMoney(ownable.getRent());
+                currentPlayer.addMoney(-ownable.getRent());
+                showMessageToHuman(isRobot, currentOwner.getName() + " got $" + ownable.getRent() + " from " + currentPlayer.getName() + ".");
+            }
+            if (currentTile instanceof Railroad){
+                goByTrainToRailroad.setEnabled(true);
+            }
+
+
+        } else if (currentTile instanceof GoToJail) {
+            showMessageToHuman(isRobot, "Go to Jail :(");
+            currentPlayer.goToJail(board.getJailPosition());
+            currentPlayer.setInJail(true);
+            showMessageToHuman(isRobot, "You are successfully in jail");
+            updateJailTileInfo(currentPlayer,currentTile);
+        } else if (currentTile instanceof Tax) {
+            final int taxToPay = ((Tax) currentTile).getTaxToPay();
+            showMessageToHuman(isRobot, "You have landed on the TAX space. Pay the " + -taxToPay + " now!");
+            currentPlayer.addMoney(taxToPay);
+            updateTaxTileInfo(currentTile);
+        }
+        updatePlayerInfo();
+        showPlayerPositions();
+    }
+
+    private void updateTaxTileInfo(BoardTile currentTile) {
+        String info = "You have to pay: "+(-((Tax) currentTile).getTaxToPay());
+        tileInfo.setText(info);
+    }
+
+    private void updateJailTileInfo(Player currentPlayer,BoardTile currentTile) {
+        String info;
+        if(currentPlayer.isInJail()){
+            info=("You are in the jail");
+        } else{
+            info="You are just visiting jail";
+        }
+        tileInfo.setText(info);
+    }
+
+    private void updateChanceTileInfo() {
+        String info=("Chance: await chance card");
+        tileInfo.setText(info);
+    }
+
+    private void updateOwnableTileInfo(Ownable ownable) {
+        String info=("Name: " + ownable.getName() + "\n" +
+                "Owner: " + String.valueOf(ownable.getOwner()) + "\n" +
+                "Cost: " + String.valueOf(ownable.getCost()) + "\n" +
+                "Rent price: " + String.valueOf(ownable.getRent()));
+        tileInfo.setText(info);
+    }
+
+    private void showMessageToHuman(boolean isRobot, String message) {
+        if (!isRobot) {
+            JOptionPane.showMessageDialog(null, message);
+        }
     }
 
     private void buy() {
@@ -333,10 +395,12 @@ public class Start extends JFrame {
         final BoardTile currentTile = board.getTileAt(currentPlayer.getCurrentPosition());
         buy.setEnabled(false);
         if (currentTile instanceof Ownable) {
-            JOptionPane.showMessageDialog(null, "You bought the " + ((Ownable) currentTile).getName());
+            if(!currentPlayer.isRobot()) {
+                JOptionPane.showMessageDialog(null, "You bought the " + ((Ownable) currentTile).getName());
+            }
             currentPlayer.addMoney(-((Ownable) currentTile).getCost());
             ((Ownable) currentTile).setOwner(currentPlayer);
-            playerLabel.setText(currentPlayer.getInventory());
+            updatePlayerInfo();
         } else {
             throw new IllegalArgumentException("There is no building you are on");
         }
@@ -349,11 +413,13 @@ public class Start extends JFrame {
         sell.setEnabled(false);
 
         if (currentTile instanceof Ownable) {
+            if(!currentPlayer.isRobot()){
+                JOptionPane.showMessageDialog(null, "You have sold "+((Ownable) currentTile).getName());
+            }
             final Ownable ownableTile = (Ownable) currentTile;
             currentPlayer.addMoney(ownableTile.getCost());
-            //todo: look over this again
             ownableTile.setOwner(null);
-            playerLabel.setText(currentPlayer.getInventory());
+            updatePlayerInfo();
         } else {
             throw new IllegalArgumentException("There is no ownable tile you are on");
         }
@@ -369,11 +435,36 @@ public class Start extends JFrame {
         payJailFee.setEnabled(currentPlayer.getIsJailFree());
         move.setEnabled(true);
         nextPlayerButton.setEnabled(false);
-        playerLabel.setText(currentPlayer.getInventory());
+        updatePlayerInfo();
         diceLabel1.setText("");
         diceLabel2.setText("");
         tileInfo.setText("");
-        JOptionPane.showMessageDialog(null, currentPlayer+" is playing!");
+        goByTrainToRailroad.setEnabled(false);
+        if(!currentPlayer.isRobot()) {
+            JOptionPane.showMessageDialog(null, currentPlayer.getName() + " is playing!");
+        } else{
+            playRobot();
+        }
+    }
+
+    private void playRobot() {
+        final AutomaticPlayer currentPlayer = (AutomaticPlayer) board.getCurrentPlayer();
+        moveInvoked();
+        final BoardTile currentTile = board.getTileAt(currentPlayer.getCurrentPosition());
+        if (currentTile instanceof Ownable)  {
+            final Ownable ownable = (Ownable) currentTile;
+            if (board.canCurrentPlayerBuy()){
+                if (currentPlayer.wantToBuy(ownable,board)){
+                    buy();
+                }
+            }
+            if (board.canCurrentPlayerSell()){
+                if (currentPlayer.wantToSell(ownable,board)){
+                    sell();
+                }
+            }
+        }
+        switchToNextPlayer();
     }
 
     private void showTileOwners() {
@@ -415,15 +506,18 @@ public class Start extends JFrame {
 
     private boolean playOutOfJail() {
         final Player currentPlayer = board.getCurrentPlayer();
+        final BoardTile currentTile = board.getTileAt(currentPlayer.getCurrentPosition());
         final int diceValue1 = dice.getNum1();
         if (diceValue1 == 6) {
             currentPlayer.setInJail(false);
             JOptionPane.showMessageDialog(null, "You threw the dice and successfully threw a six. Play on!!!");
+            updateJailTileInfo(currentPlayer,currentTile);
             return true;
         } else {
             JOptionPane.showMessageDialog(null, "You threw the dice and unsuccessfully threw a six");
             move.setEnabled(false);
             nextPlayerButton.setEnabled(true);
+            updateJailTileInfo(currentPlayer, currentTile);
             return false;
         }
     }

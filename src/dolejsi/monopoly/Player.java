@@ -12,7 +12,7 @@ public class Player {
     }
 
     private boolean inJail = false;
-    private boolean jailFree = true;
+    private boolean jailFree = false;
 
 
     Player(String name, int money) {
@@ -92,5 +92,25 @@ public class Player {
 
     public boolean isAlive() {
         return money >= 0;
+    }
+
+    public boolean isRobot() {
+        return false;
+    }
+
+    public void goToRailroad1() {
+        currentPosition=3;
+    }
+
+    public void goToRailroad2() {
+        currentPosition=9;
+    }
+
+    public void goToRailroad3() {
+        currentPosition=15;
+    }
+
+    public void goToRailroad4() {
+        currentPosition=21;
     }
 }
