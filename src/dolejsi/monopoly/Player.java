@@ -12,7 +12,7 @@ public class Player {
     }
 
     private boolean inJail = false;
-    private boolean jailFree = false;
+    private boolean jailFree = true;
 
 
     Player(String name, int money) {

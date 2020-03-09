@@ -75,6 +75,8 @@ public class Start extends JFrame {
     private JPanel tile21Players;
     private JPanel tile22Players;
     private JPanel tile23Players;
+    private JTextArea playerInfo;
+    private JTextArea tileInfo;
 
     private JPanel[] allPanels;
 
@@ -151,13 +153,13 @@ public class Start extends JFrame {
         final List<Player> players = newGameForm.isOkeyed() ?
                 //when okeyed
                 newGameForm.getPlayerNames().stream()
-                        .map(playerName -> new Player(playerName, 4000))
+                        .map(playerName -> new Player(playerName, 1500))
                         .collect(Collectors.toList()) :
                 //when cancelled
                 asList(
-                        new Player("Filip", 4000),
-                        new Player("Jan", 4000),
-                        new Player("Jarka", 4000)
+                        new Player("Filip", 1500),
+                        new Player("Jan", 1500),
+                        new Player("Jarka", 1500)
                 );
 
         final Chance chance = new Chance();
@@ -201,9 +203,9 @@ public class Start extends JFrame {
             public void actionPerformed(ActionEvent actionEvent) {
                 final Player currentPlayer = board.getCurrentPlayer();
                 if (currentPlayer.isInJail() && !currentPlayer.getIsJailFree()) {
-                    playInJail();
-                } else if (currentPlayer.isInJail() && currentPlayer.getIsJailFree()) {
-                    payJailFee.setEnabled(true);
+                    if (!playOutOfJail()){
+                        switchToNextPlayer();
+                    }
                 }
                 nextPlayerButton.setEnabled(true);
                 move.setEnabled(false);
@@ -224,7 +226,7 @@ public class Start extends JFrame {
                         break;
                     }
                     if (i == 2) {
-                            JOptionPane.showMessageDialog(null, "You threw three doubles!!! Go to Jail!!!");
+                        JOptionPane.showMessageDialog(null, "You threw three doubles!!! Go to Jail!!!");
                         currentPlayer.goToJail(board.getJailPosition());
                         switchToNextPlayer();
                         showPlayerPositions();
@@ -244,6 +246,11 @@ public class Start extends JFrame {
                 } else if (currentTile instanceof Ownable) {
 
                     final Ownable ownable = (Ownable) currentTile;
+                    String info=("Name: " + ownable.getName() + "\n" +
+                            "Owner: " + String.valueOf(ownable.getOwner()) + "\n" +
+                            "Cost: " + String.valueOf(ownable.getCost()) + "\n" +
+                            "Rent price: " + String.valueOf(ownable.getRent()));
+                    tileInfo.setText(info);
 
                     if (currentPlayer.getMoney()
                             >= ownable.getCost() && ownable.getOwner() == null) {
@@ -252,7 +259,7 @@ public class Start extends JFrame {
                         if (currentPlayer == ownable.getOwner()) {
                             sell.setEnabled(true);
                         }
-                    } else if (ownable.getOwner() != null) {
+                    } else if (ownable.getOwner() != currentPlayer && ownable.getOwner()!=null) {
                         Player currentOwner = ownable.getOwner();
                         JOptionPane.showMessageDialog(null, "YACK... You stepped on " + currentOwner.getName() + "'s property! Pay $" + ownable.getRent() + " for rent!");
                         currentOwner.addMoney(ownable.getRent());
@@ -296,9 +303,11 @@ public class Start extends JFrame {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 final Player currentPlayer = board.getCurrentPlayer();
-                final BoardTile currentTile = board.getTileAt(currentPlayer.getCurrentPosition());
                 if (currentPlayer.getIsJailFree()) {
                     currentPlayer.setIsJailFree(false);
+                    currentPlayer.setInJail(false);
+                    payJailFee.setEnabled(false);
+                    JOptionPane.showMessageDialog(null, "You redeemed yourself out of jail : )");
                 }
             }
         });
@@ -309,7 +318,7 @@ public class Start extends JFrame {
                 switchToNextPlayer();
                 final java.util.List<Player> deadPlayers = board.removeDeadPlayers();
 
-                deadPlayers.forEach(p -> JOptionPane.showMessageDialog(null, "We are very sorry to tell you, but you have been kicked out of our server. It has been an honor to play with you, " + p.getName()));
+                deadPlayers.forEach(p -> JOptionPane.showMessageDialog(null, "We are very sorry to tell you, but you have been kicked out of our server. It has been an honor to play with you, " + p.getName()+"By the way did you know that Samuil is gayyyyyy!!!!"));
                 showTileOwners();
                 showPlayerPositions();
                 if (board.getPlayers().size() == 1) {
@@ -357,12 +366,14 @@ public class Start extends JFrame {
         final Player currentPlayer = board.getCurrentPlayer();
         buy.setEnabled(false);
         sell.setEnabled(false);
-        payJailFee.setEnabled(false);
+        payJailFee.setEnabled(currentPlayer.getIsJailFree());
         move.setEnabled(true);
         nextPlayerButton.setEnabled(false);
         playerLabel.setText(currentPlayer.getInventory());
         diceLabel1.setText("");
         diceLabel2.setText("");
+        tileInfo.setText("");
+        JOptionPane.showMessageDialog(null, currentPlayer+" is playing!");
     }
 
     private void showTileOwners() {
@@ -402,16 +413,18 @@ public class Start extends JFrame {
         }
     }
 
-    private void playInJail() {
+    private boolean playOutOfJail() {
         final Player currentPlayer = board.getCurrentPlayer();
         final int diceValue1 = dice.getNum1();
         if (diceValue1 == 6) {
             currentPlayer.setInJail(false);
-            JOptionPane.showMessageDialog(null, "You successfully threw a six. Play on!!!");
+            JOptionPane.showMessageDialog(null, "You threw the dice and successfully threw a six. Play on!!!");
+            return true;
         } else {
-            JOptionPane.showMessageDialog(null, "You did not successfully throw a six");
+            JOptionPane.showMessageDialog(null, "You threw the dice and unsuccessfully threw a six");
             move.setEnabled(false);
             nextPlayerButton.setEnabled(true);
+            return false;
         }
     }
 
