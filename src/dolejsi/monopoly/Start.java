@@ -79,6 +79,7 @@ public class Start extends JFrame {
     private JTextArea tileInfo;
     private JButton goByTrainToRailroad;
     private JComboBox railroads;
+    private JButton exitButton;
     private JPanel[] allPanels;
 
     private JPanel[] tilePlayerPositions;
@@ -166,26 +167,26 @@ public class Start extends JFrame {
                 new Building(1, null, 60, 10, "Old Kent Road"),
                 new ChanceTile(2, chance),
                 new Railroad(3, null, 200, 100),
-                new Building(4, null, 300, 100, "Pentoville Road"),
+                new Building(4, null, 120, 40, "Pentoville Road"),
                 new Tax(5, -75),
                 new Jail(6),
-                new Building(7, null, 300, 100, "Whitehall"),
+                new Building(7, null, 140, 50, "Whitehall"),
                 new ChanceTile(8, chance),
                 new Railroad(9, null, 200, 100),
-                new Tax(10, -300),
-                new Building(11, null, 500, 300, "Marlborough street"),
+                new Tax(10, -75),
+                new Building(11, null, 180, 70, "Marlborough street"),
                 new Parking(12),
-                new Building(13, null, 600, 200, "Fleet street"),
+                new Building(13, null, 220, 90, "Fleet street"),
                 new ChanceTile(14, chance),
                 new Railroad(15, null, 200, 100),
-                new Building(16, null, 650, 300, "Coventry street"),
-                new Building(17, null, 650, 350, "Piccadilly"),
+                new Building(16, null, 260, 110, "Coventry street"),
+                new Building(17, null, 280, 120, "Piccadilly"),
                 new GoToJail(18),
-                new Building(19, null, 750, 400, "Oxford street"),
+                new Building(19, null, 300, 130, "Oxford street"),
                 new ChanceTile(20, chance),
                 new Railroad(21, null, 200, 100),
-                new Building(22, null, 800, 600, "Mayfair"),
-                new Tax(23, -400),
+                new Building(22, null, 400, 400, "Mayfair"),
+                new Tax(23, -75),
 
         }, players, chance);
 
@@ -219,6 +220,7 @@ public class Start extends JFrame {
                 sell();
             }
         });
+
         payJailFee.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
@@ -227,8 +229,10 @@ public class Start extends JFrame {
                     currentPlayer.setIsJailFree(false);
                     currentPlayer.setInJail(false);
                     payJailFee.setEnabled(false);
-                    JOptionPane.showMessageDialog(null, "You redeemed yourself out of jail : )");
+                    updatePlayerInfo();
+                    JOptionPane.showMessageDialog(Start.this, "You redeemed yourself out of jail : )");
                 }
+                updatePlayerInfo();
             }
         });
         nextPlayerButton.addActionListener(new ActionListener() {
@@ -238,11 +242,11 @@ public class Start extends JFrame {
                 switchToNextPlayer();
                 final java.util.List<Player> deadPlayers = board.removeDeadPlayers();
 
-                deadPlayers.forEach(p -> JOptionPane.showMessageDialog(null, "We are very sorry to tell you, but you have been kicked out of our server. It has been an honor to play with you, " + p.getName()+"By the way did you know that Samuil is gayyyyyy!!!!"));
+                deadPlayers.forEach(p -> JOptionPane.showMessageDialog(Start.this, "We are very sorry to tell you, but you have been kicked out of our server. It has been an honor to play with you, " + p.getName()+"By the way did you know that Samuil is gayyyyyy!!!!"));
                 showTileOwners();
                 showPlayerPositions();
                 if (board.getPlayers().size() == 1) {
-                    JOptionPane.showMessageDialog(null, "Congrats! You won!");
+                    JOptionPane.showMessageDialog(Start.this, "Congrats! You won!");
                 }
             }
         });
@@ -260,16 +264,35 @@ public class Start extends JFrame {
                 } else if (railroads.getSelectedIndex()==3){
                     currentPlayer.goToRailroad4();
                 }
+                goByTrainToRailroad.setEnabled(false);
                 showPlayerPositions();
+            }
+        });
+        exitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                dispose();
+                Menu menu = new Menu();
+                menu.setVisible(true);
+                menu.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+                menu.setSize(1500,1000);
             }
         });
     }
 
     private void updatePlayerInfo() {
         final Player currentPlayer = board.getCurrentPlayer();
+        final String jailPlayerInfo;
+        if (currentPlayer.isInJail()){
+            jailPlayerInfo="You are in jail";
+        } else{
+            jailPlayerInfo="You are not in jail";
+        }
         String info = ("Name: " + currentPlayer.getName() + "\n" +
-                "Money: " + String.valueOf(currentPlayer.getMoney()));
+                "Money: " + String.valueOf(currentPlayer.getMoney())+"\n"+
+                jailPlayerInfo);
         playerInfo.setText(info);
+        playerInfo.setBackground(playerColors[board.getCurrentPlayerAsInt()]);
     }
 
     private void moveInvoked() {
@@ -301,6 +324,7 @@ public class Start extends JFrame {
             if (i == 2) {
                 showMessageToHuman(isRobot, "You threw three doubles!!! Go to Jail!!!");
                 currentPlayer.goToJail(board.getJailPosition());
+                updatePlayerInfo();
                 switchToNextPlayer();
                 showPlayerPositions();
                 return;
@@ -317,6 +341,8 @@ public class Start extends JFrame {
         if (currentTile instanceof ChanceTile) {
             chance.next().applyCard(currentPlayer, board);
             updateChanceTileInfo();
+            showTileOwners();
+            showPlayerPositions();
         } else if (currentTile instanceof Ownable) {
 
             final Ownable ownable = (Ownable) currentTile;
@@ -386,7 +412,7 @@ public class Start extends JFrame {
 
     private void showMessageToHuman(boolean isRobot, String message) {
         if (!isRobot) {
-            JOptionPane.showMessageDialog(null, message);
+            JOptionPane.showMessageDialog(Start.this, message);
         }
     }
 
@@ -396,7 +422,7 @@ public class Start extends JFrame {
         buy.setEnabled(false);
         if (currentTile instanceof Ownable) {
             if(!currentPlayer.isRobot()) {
-                JOptionPane.showMessageDialog(null, "You bought the " + ((Ownable) currentTile).getName());
+                JOptionPane.showMessageDialog(Start.this, "You bought the " + ((Ownable) currentTile).getName());
             }
             currentPlayer.addMoney(-((Ownable) currentTile).getCost());
             ((Ownable) currentTile).setOwner(currentPlayer);
@@ -414,7 +440,7 @@ public class Start extends JFrame {
 
         if (currentTile instanceof Ownable) {
             if(!currentPlayer.isRobot()){
-                JOptionPane.showMessageDialog(null, "You have sold "+((Ownable) currentTile).getName());
+                JOptionPane.showMessageDialog(Start.this, "You have sold "+((Ownable) currentTile).getName());
             }
             final Ownable ownableTile = (Ownable) currentTile;
             currentPlayer.addMoney(ownableTile.getCost());
@@ -441,7 +467,7 @@ public class Start extends JFrame {
         tileInfo.setText("");
         goByTrainToRailroad.setEnabled(false);
         if(!currentPlayer.isRobot()) {
-            JOptionPane.showMessageDialog(null, currentPlayer.getName() + " is playing!");
+            JOptionPane.showMessageDialog(Start.this, currentPlayer.getName() + " is playing!");
         } else{
             playRobot();
         }
@@ -450,6 +476,8 @@ public class Start extends JFrame {
     private void playRobot() {
         final AutomaticPlayer currentPlayer = (AutomaticPlayer) board.getCurrentPlayer();
         moveInvoked();
+        showPlayerPositions();
+        showTileOwners();
         final BoardTile currentTile = board.getTileAt(currentPlayer.getCurrentPosition());
         if (currentTile instanceof Ownable)  {
             final Ownable ownable = (Ownable) currentTile;
@@ -464,6 +492,8 @@ public class Start extends JFrame {
                 }
             }
         }
+        showPlayerPositions();
+        showTileOwners();
         switchToNextPlayer();
     }
 
@@ -505,19 +535,22 @@ public class Start extends JFrame {
     }
 
     private boolean playOutOfJail() {
+        updatePlayerInfo();
         final Player currentPlayer = board.getCurrentPlayer();
         final BoardTile currentTile = board.getTileAt(currentPlayer.getCurrentPosition());
         final int diceValue1 = dice.getNum1();
         if (diceValue1 == 6) {
             currentPlayer.setInJail(false);
-            JOptionPane.showMessageDialog(null, "You threw the dice and successfully threw a six. Play on!!!");
+            JOptionPane.showMessageDialog(Start.this, "You threw the dice and successfully threw a six. Play on!!!");
             updateJailTileInfo(currentPlayer,currentTile);
+            updatePlayerInfo();
             return true;
         } else {
-            JOptionPane.showMessageDialog(null, "You threw the dice and unsuccessfully threw a six");
+            JOptionPane.showMessageDialog(Start.this, "You threw the dice and unsuccessfully threw a six");
             move.setEnabled(false);
             nextPlayerButton.setEnabled(true);
             updateJailTileInfo(currentPlayer, currentTile);
+            updatePlayerInfo();
             return false;
         }
     }

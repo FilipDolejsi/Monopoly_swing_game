@@ -62,6 +62,10 @@ public final class Board {
         return this.players.get(currentPlayer);
     }
 
+    public int getCurrentPlayerAsInt(){
+        return currentPlayer;
+    }
+
     public BoardTile getTileAt(int currentPosition) {
         return tiles[currentPosition];
     }

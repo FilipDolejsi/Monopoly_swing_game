@@ -59,6 +59,13 @@ public final class Chance {
                         JOptionPane.showMessageDialog(null, "You've landed on chance: "+getDescription());
                         currentPlayer.move(-3, 24);
                     }
+                },
+                new Card("Take a walk to the Parking place – Advance token to Parking") {
+                    @Override
+                    void applyCard(Player currentPlayer, Board board) {
+                        JOptionPane.showMessageDialog(null, "You've landed on chance: "+getDescription());
+                        currentPlayer.goToParking(12);
+                    }
                 }
         };
     }

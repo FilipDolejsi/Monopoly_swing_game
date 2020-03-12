@@ -2,11 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5902a880-e8c0-45e8-a962-1a7919dd3177" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/dolejsi/monopoly/AutomaticPlayer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dolejsi/monopoly/HowToPlay.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dolejsi/monopoly/HowToPlay.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dolejsi/monopoly/Menu.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dolejsi/monopoly/Menu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dolejsi/monopoly/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dolejsi/monopoly/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dolejsi/monopoly/NewGameForm.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/dolejsi/monopoly/NewGameForm.form" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dolejsi/monopoly/NewGameForm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dolejsi/monopoly/NewGameForm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dolejsi/monopoly/Chance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dolejsi/monopoly/Chance.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dolejsi/monopoly/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dolejsi/monopoly/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dolejsi/monopoly/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dolejsi/monopoly/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dolejsi/monopoly/Start.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/dolejsi/monopoly/Start.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dolejsi/monopoly/Start.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dolejsi/monopoly/Start.java" afterDir="false" />
@@ -40,7 +43,7 @@
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW" value="false" />
+    <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.SHOW" value="true" />
     <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.SHOW" value="true" />
     <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="221" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
@@ -249,7 +252,14 @@
       <option name="project" value="LOCAL" />
       <updated>1583779307333</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="No errors at all... Just missing a home screen. For now enjoy :) (with robots as well).">
+      <created>1583786565650</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1583786565651</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -260,49 +270,54 @@
     <MESSAGE value="added vital changes" />
     <MESSAGE value="big update here!!!" />
     <MESSAGE value="Small touches. No errors... I hope" />
-    <option name="LAST_COMMIT_MESSAGE" value="Small touches. No errors... I hope" />
+    <MESSAGE value="No errors at all... Just missing a home screen. For now enjoy :) (with robots as well)." />
+    <option name="LAST_COMMIT_MESSAGE" value="No errors at all... Just missing a home screen. For now enjoy :) (with robots as well)." />
   </component>
   <component name="WindowStateProjectService">
+    <state x="233" y="0" key="#Inspections" timestamp="1584020014587">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="233" y="0" key="#Inspections/0.0.1280.680@0.0.1280.680" timestamp="1584020014587" />
     <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583269108419">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="96" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1583269108419" />
-    <state x="446" y="58" key="#com.intellij.ide.util.MemberChooser" timestamp="1583785668987">
+    <state x="446" y="58" key="#com.intellij.ide.util.MemberChooser" timestamp="1584044505487">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="446" y="58" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1583785668987" />
-    <state x="371" y="132" key="#com.intellij.ide.util.TreeFileChooserDialog" timestamp="1583682097786">
+    <state x="446" y="58" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1584044505487" />
+    <state x="371" y="132" key="#com.intellij.ide.util.TreeFileChooserDialog" timestamp="1584029791319">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="371" y="132" key="#com.intellij.ide.util.TreeFileChooserDialog/0.0.1280.680@0.0.1280.680" timestamp="1583682097786" />
-    <state x="371" y="89" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1583435973408">
+    <state x="371" y="132" key="#com.intellij.ide.util.TreeFileChooserDialog/0.0.1280.680@0.0.1280.680" timestamp="1584029791319" />
+    <state x="371" y="89" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1583934259900">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="371" y="89" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1583435973408" />
-    <state x="297" y="0" key="CommitChangelistDialog2" timestamp="1583779305443">
+    <state x="371" y="89" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1583934259900" />
+    <state x="297" y="0" key="CommitChangelistDialog2" timestamp="1583786564261">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="297" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1583779305443" />
+    <state x="297" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1583786564261" />
     <state width="488" height="438" key="DebuggerActiveHint" timestamp="1583697426664">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="488" height="438" key="DebuggerActiveHint/0.0.1280.680@0.0.1280.680" timestamp="1583697426664" />
-    <state width="1237" height="162" key="GridCell.Tab.0.bottom" timestamp="1583786383851">
+    <state width="1237" height="162" key="GridCell.Tab.0.bottom" timestamp="1584045722316">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="162" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1583786383851" />
-    <state width="1237" height="162" key="GridCell.Tab.0.center" timestamp="1583786383851">
+    <state width="1237" height="162" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1584045722316" />
+    <state width="1237" height="162" key="GridCell.Tab.0.center" timestamp="1584045722315">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="162" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1583786383851" />
-    <state width="1237" height="162" key="GridCell.Tab.0.left" timestamp="1583786383850">
+    <state width="1237" height="162" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1584045722315" />
+    <state width="1237" height="162" key="GridCell.Tab.0.left" timestamp="1584045722315">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="162" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1583786383850" />
-    <state width="1237" height="162" key="GridCell.Tab.0.right" timestamp="1583786383851">
+    <state width="1237" height="162" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1584045722315" />
+    <state width="1237" height="162" key="GridCell.Tab.0.right" timestamp="1584045722315">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="162" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1583786383851" />
+    <state width="1237" height="162" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1584045722315" />
     <state width="1237" height="204" key="GridCell.Tab.1.bottom" timestamp="1583780867998">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -331,10 +346,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="521" y="136" key="UIDesigner.ListEditorDialog/0.0.1280.680@0.0.1280.680" timestamp="1583785479996" />
-    <state x="337" y="166" key="com.intellij.ide.util.TipDialog" timestamp="1583257725076">
+    <state x="337" y="166" key="com.intellij.ide.util.TipDialog" timestamp="1584045795155">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="337" y="166" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1583257725076" />
+    <state x="337" y="166" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1584045795155" />
     <state x="376" y="235" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1583267721416">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -351,6 +366,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="412" y="45" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1280.680@0.0.1280.680" timestamp="1583268646418" />
+    <state x="413" y="223" key="com.intellij.uiDesigner.propertyInspector.editors.string.StringEditorDialog" timestamp="1584019168318">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="413" y="223" key="com.intellij.uiDesigner.propertyInspector.editors.string.StringEditorDialog/0.0.1280.680@0.0.1280.680" timestamp="1584019168318" />
     <state x="371" y="97" width="538" height="495" key="extract.method.dialog" timestamp="1583784514886">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -367,10 +386,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="383" y="0" key="refactoring.ChangeSignatureDialog/0.0.1280.680@0.0.1280.680" timestamp="1583264234335" />
-    <state x="297" y="151" key="run.anything.popup" timestamp="1583783772361">
+    <state x="297" y="151" key="run.anything.popup" timestamp="1584017764985">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="297" y="151" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1583783772361" />
+    <state x="297" y="151" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1584017764985" />
     <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1583786289416">
       <screen x="0" y="0" width="1280" height="680" />
     </state>

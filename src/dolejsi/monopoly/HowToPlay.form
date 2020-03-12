@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="dolejsi.monopoly.HowToPlay">
+  <grid id="27dc6" binding="mainPanel" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="35" y="20" width="687" height="325"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <component id="88fdb" class="javax.swing.JTextArea" binding="youStartWith$1500TextArea" default-binding="true">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="50"/>
+          </grid>
+        </constraints>
+        <properties>
+          <editable value="false"/>
+          <text value="You start with $1500. &#10;There can be only three human players and a minimal of one human player. &#10;You can also use robots to play with you.  &#10;To play the game you need to type in your name and fill the form. &#10;To win you need to get the other players to $0.&#10;In every move, you can roll the dice and move to the&#10;specific tile of the sum of the dice.  &#10;However, if you roll the same values on the dice three times in a row, you get in jail.  &#10;If you land on an ownable tile, you can buy it. &#10;It after will change the color to your color. &#10;When you land on your tile, you can sell it for the same price you bought it.&#10;If you are in jail, you need to throw a six to get out of jail (after you can play normally).&#10;When the robots play there will be no pop-up, therefore it will only play by itself."/>
+        </properties>
+      </component>
+      <component id="27f98" class="javax.swing.JButton" binding="cancelDoNotPressButton" default-binding="true">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Cancel (do not press the x button or it will close everything)"/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>

@@ -5,9 +5,9 @@ import javax.swing.*;
 public class Main {
 
     public static void main(String[] args) {
-        Start start = new Start();
-        start.setVisible(true);
-        start.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        start.setSize(1500,1000);
+        Menu menu = new Menu();
+        menu.setVisible(true);
+        menu.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        menu.setSize(1500,1000);
     }
 }

@@ -113,4 +113,8 @@ public class Player {
     public void goToRailroad4() {
         currentPosition=21;
     }
+
+    public void goToParking(int i) {
+        currentPosition=i;
+    }
 }
