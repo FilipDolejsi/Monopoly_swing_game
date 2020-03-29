@@ -21,7 +21,7 @@ public class Player {
     }
 
     public String getName() {
-        return name;
+         return name;
     }
 
     public int getMoney() {

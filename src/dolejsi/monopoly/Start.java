@@ -13,6 +13,7 @@ public class Start extends JFrame {
     private final Dice dice;
     private final Board board;
     private final Chance chance;
+    public boolean robotStillInJail = false;
     //when using the form, please use reasonable names and place the components in mainPanel.
     //main panels and buttons
     private JPanel mainPanel;
@@ -288,9 +289,19 @@ public class Start extends JFrame {
         } else{
             jailPlayerInfo="You are not in jail";
         }
+
+        final boolean isRobot = currentPlayer instanceof AutomaticPlayer;
+        String robotInfo;
+        if (isRobot){
+            robotInfo = "This is a robot";
+        } else{
+            robotInfo = "You are a player";
+        }
+
         String info = ("Name: " + currentPlayer.getName() + "\n" +
                 "Money: " + String.valueOf(currentPlayer.getMoney())+"\n"+
-                jailPlayerInfo);
+                jailPlayerInfo + "\n" +
+                robotInfo);
         playerInfo.setText(info);
         playerInfo.setBackground(playerColors[board.getCurrentPlayerAsInt()]);
     }
@@ -299,8 +310,11 @@ public class Start extends JFrame {
         final Player currentPlayer = board.getCurrentPlayer();
         final boolean isRobot = currentPlayer instanceof AutomaticPlayer;
         if (currentPlayer.isInJail() && !currentPlayer.getIsJailFree()) {
-            if (!playOutOfJail()){
+            if(playOutOfJail()){
+                return;
+            }else{
                 switchToNextPlayer();
+                return;
             }
         }
         nextPlayerButton.setEnabled(true);
@@ -390,7 +404,7 @@ public class Start extends JFrame {
     private void updateJailTileInfo(Player currentPlayer,BoardTile currentTile) {
         String info;
         if(currentPlayer.isInJail()){
-            info=("You are in the jail");
+            info=("You are in jail");
         } else{
             info="You are just visiting jail";
         }
@@ -404,7 +418,7 @@ public class Start extends JFrame {
 
     private void updateOwnableTileInfo(Ownable ownable) {
         String info=("Name: " + ownable.getName() + "\n" +
-                "Owner: " + String.valueOf(ownable.getOwner()) + "\n" +
+                "Owner: " + (ownable.getOwner()!=null? ownable.getOwner().getName():"No owner") + "\n" +
                 "Cost: " + String.valueOf(ownable.getCost()) + "\n" +
                 "Rent price: " + String.valueOf(ownable.getRent()));
         tileInfo.setText(info);
@@ -476,25 +490,28 @@ public class Start extends JFrame {
     private void playRobot() {
         final AutomaticPlayer currentPlayer = (AutomaticPlayer) board.getCurrentPlayer();
         moveInvoked();
-        showPlayerPositions();
-        showTileOwners();
-        final BoardTile currentTile = board.getTileAt(currentPlayer.getCurrentPosition());
-        if (currentTile instanceof Ownable)  {
-            final Ownable ownable = (Ownable) currentTile;
-            if (board.canCurrentPlayerBuy()){
-                if (currentPlayer.wantToBuy(ownable,board)){
-                    buy();
+        if(!currentPlayer.isInJail()) {
+            moveInvoked();
+            showPlayerPositions();
+            showTileOwners();
+            final BoardTile currentTile = board.getTileAt(currentPlayer.getCurrentPosition());
+            if (currentTile instanceof Ownable) {
+                final Ownable ownable = (Ownable) currentTile;
+                if (board.canCurrentPlayerBuy()) {
+                    if (currentPlayer.wantToBuy(ownable, board)) {
+                        buy();
+                    }
+                }
+                if (board.canCurrentPlayerSell()) {
+                    if (currentPlayer.wantToSell(ownable, board)) {
+                        sell();
+                    }
                 }
             }
-            if (board.canCurrentPlayerSell()){
-                if (currentPlayer.wantToSell(ownable,board)){
-                    sell();
-                }
-            }
+            showPlayerPositions();
+            showTileOwners();
+            switchToNextPlayer();
         }
-        showPlayerPositions();
-        showTileOwners();
-        switchToNextPlayer();
     }
 
     private void showTileOwners() {
@@ -537,16 +554,18 @@ public class Start extends JFrame {
     private boolean playOutOfJail() {
         updatePlayerInfo();
         final Player currentPlayer = board.getCurrentPlayer();
+        final boolean isRobot = currentPlayer instanceof AutomaticPlayer;
         final BoardTile currentTile = board.getTileAt(currentPlayer.getCurrentPosition());
         final int diceValue1 = dice.getNum1();
+        currentPlayer.setInJail(true);
         if (diceValue1 == 6) {
             currentPlayer.setInJail(false);
-            JOptionPane.showMessageDialog(Start.this, "You threw the dice and successfully threw a six. Play on!!!");
-            updateJailTileInfo(currentPlayer,currentTile);
+            showMessageToHuman(isRobot, "You threw the dice and threw a six. Play on!!!");
+            updateJailTileInfo(currentPlayer, currentTile);
             updatePlayerInfo();
             return true;
         } else {
-            JOptionPane.showMessageDialog(Start.this, "You threw the dice and unsuccessfully threw a six");
+            showMessageToHuman(isRobot, "You threw the dice and did not throw a six. Try again later!!!");
             move.setEnabled(false);
             nextPlayerButton.setEnabled(true);
             updateJailTileInfo(currentPlayer, currentTile);
